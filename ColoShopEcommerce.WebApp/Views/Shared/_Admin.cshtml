@@ -40,13 +40,13 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
-                                <i class="mdi mdi-settings text-primary"></i>
-                                Profile
+                                <i class="mdi mdi-account text-primary"></i>
+                                Tài Khoản
                             </a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item">
                                 <i class="mdi mdi-logout text-primary"></i>
-                                Logout
+                                Đăng Xuất
                             </a>
                         </div>
                     </li>
@@ -64,7 +64,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="@Url.Action("Index","Dashboard")">
                             <i class="mdi mdi-view-dashboard-outline menu-icon"></i>
                             <span class="menu-title">Dashboard</span>
                         </a>
@@ -85,7 +85,7 @@
                         <div class="collapse" id="editors">
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"><a class="nav-link" href="#">Post editors</a></li>
-                                <li class="nav-item"><a class="nav-link" href="#">News editors</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","News")">News editors</a></li>
                             </ul>
                         </div>
                     </li>
@@ -182,6 +182,11 @@
     <script src="~/Content/Admin/js/dashboard.js"></script>
     <!-- Custom js for Datatable-->
     <script src="~/Content/Admin/js/data-table.js"></script>
+    <!-- Custom js for Notification-->
+    <script src="~/Content/Admin/js/toastDemo.js"></script>
+    <!-- Lib CKEditor-->
+    <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
+
     <!-- End custom js for this page-->
     @RenderSection("scripts", required: false)
 
