@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.EF.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                @*Custom đường dẫn*@
+                <div>
+                    <a href="/admin/category/add" class="btn btn-primary">Thêm mới</a>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID #</th>
+                                        <th>Title</th>
+                                        <th>Position</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+
+                                        var i = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>@i</td>
+                                                <td>@item.Title</td>
+                                                <td>@item.Position</td>
+                                                <td>
+                                                    <a href="#" class="btn btn-outline-primary">Xem</a>
+                                                    <a href="/admin/category/edit/@item.Id" class="btn btn-outline-primary">Sửa</a>
+                                                    <a href="#" class="btn btn-outline-primary">Xóa</a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="4"> Không có bản ghi nào ... </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial -->
+</div>
+
