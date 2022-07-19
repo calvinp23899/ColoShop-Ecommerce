@@ -72,26 +72,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">
                             <i class="mdi mdi-airplay menu-icon"></i>
-                            <span class="menu-title">SystemSetting</span>
+                            <span class="menu-title">Cài Đặt Hệ Thống</span>
                         </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#editors" aria-expanded="false" aria-controls="editors">
                             <i class="mdi mdi-pencil-box-outline menu-icon"></i>
-                            <span class="menu-title">Editors</span>
+                            <span class="menu-title">Soạn Thảo</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="editors">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="#">Post editors</a></li>
-                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","News")">News editors</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Soạn Thảo Bài Viết</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","News")">Soạn Thảo Tin Tức</a></li>
                             </ul>
                         </div>
                     </li>
 
 
-                    <li class="nav-item">
+                    @*<li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#tables" aria-expanded="false" aria-controls="tables">
                             <i class="mdi mdi-table-large menu-icon"></i>
                             <span class="menu-title">Tables</span>
@@ -105,7 +105,7 @@
                                 <li class="nav-item"> <a class="nav-link" href="pages/tables/sortable-table.html">Sortable table</a></li>
                             </ul>
                         </div>
-                    </li>
+                    </li>*@
 
 
 
@@ -113,13 +113,13 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
                             <i class="mdi mdi-lock-outline menu-icon"></i>
-                            <span class="menu-title">User Pages</span>
+                            <span class="menu-title">Quản Lý Tài Khoản</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> Admin </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#"> Client </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Quản Trị </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Khách Hàng </a></li>
                             </ul>
                         </div>
                     </li>
@@ -127,15 +127,15 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#general-pages" aria-expanded="false" aria-controls="general-pages">
                             <i class="mdi mdi-codepen menu-icon"></i>
-                            <span class="menu-title">General Management</span>
+                            <span class="menu-title">Quản Lý Chung</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="general-pages">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> Contact </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#"> Advertisement </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#"> Subscribe </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Category")"> Category </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Liên Lạc </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Quảng Cáo </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Đăng Kí </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Category")"> Thư Mục </a></li>
 
                             </ul>
                         </div>
@@ -143,12 +143,12 @@
                     <li class="nav-item">
                         <a class="nav-link" data-toggle="collapse" href="#e-commerce" aria-expanded="false" aria-controls="e-commerce">
                             <i class="mdi mdi-cart-outline menu-icon"></i>
-                            <span class="menu-title">Order Management</span>
+                            <span class="menu-title">Quản Lý Hóa Đơn Hàng</span>
                             <i class="menu-arrow"></i>
                         </a>
                         <div class="collapse" id="e-commerce">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> Orders </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="#"> Hóa Đơn Hàng </a></li>
                                 <li class="nav-item"> <a class="nav-link" href="#"> Pricing Table </a></li>
                                 <li class="nav-item"> <a class="nav-link" href="#"> Invoice </a></li>
                             </ul>

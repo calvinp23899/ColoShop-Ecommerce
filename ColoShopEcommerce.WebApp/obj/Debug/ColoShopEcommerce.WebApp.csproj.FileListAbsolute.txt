@@ -220,3 +220,4 @@ D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShop
 D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.csproj.CopyComplete
 D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.dll
 D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.pdb
+D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.updateActive.resources

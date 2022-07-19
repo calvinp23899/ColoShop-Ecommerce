@@ -25,6 +25,7 @@
                                         <th>Hình Ảnh</th>
                                         <th>Tiêu Đề</th>
                                         <th>Ngày Tạo</th>
+                                        <th>Tình Trạng</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -36,14 +37,16 @@
                                         foreach (var item in Model)
                                         {
                                             <tr id="trow_@item.Id">
+
                                                 <td>@i</td>
                                                 <td>
                                                     <img src="~/UploadImageNews/@item.Image" width="100" height="100" />
+                                                    
                                                 </td>
-                                                <td>@item.Title</td>
+                                                <td>@Html.Raw(@item.Title.Remove(50))..</td>
                                                 <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                                <td>@(item.IsActive? "Hiển Thị": "Không Hiển Thị")</td>
                                                 <td>
-                                                    <a href="#" class="btn btn-outline-primary">Xem</a>
                                                     <a href="/admin/news/edit/@item.Id" class="btn btn-outline-primary">Sửa</a>
                                                     <a href="#" data-id="@item.Id" class="btn btn-outline-primary btnDelete" onclick="showSuccessToast()">Xóa</a>
                                                 </td>
@@ -71,3 +74,26 @@
     <!-- content-wrapper ends -->
     <!-- partial -->
 </div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var msg = confirm('Bạn có muốn xóa bản ghi này không ?');
+                if (msg === true) {
+                    $.ajax({
+                        url: '/admin/news/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+}
