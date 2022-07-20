@@ -1,0 +1,58 @@
+﻿@model ColoShopEcommerce.WebApp.Models.EF.ProductCategory
+
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Thêm Danh Mục Sản Phẩm</h4>
+                        @using (Html.BeginForm("Add", "ProductCategories", FormMethod.Post, new { }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                <label for="exampleInputName1">Tiêu Đề</label>
+                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu Đề" })
+                                @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail3">Mô Tả </label>
+                                @Html.TextAreaFor(x => x.Description, new { @class = "form-control", @placeholder = "Mô tả" })
+                                @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Seo Title</label>
+                                @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", @placeholder = "Seotitle" })
+                                @Html.ValidationMessageFor(x => x.SeoTitle, null, new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Seo Description</label>
+                                @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control", @placeholder = "SeoDescription" })
+                                @Html.ValidationMessageFor(x => x.SeoDescription, null, new { @class = "text-danger" })
+
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">SeoKeyword</label>
+                                @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", @placeholder = "SeoKeyword" })
+                                @Html.ValidationMessageFor(x => x.SeoKeywords, null, new { @class = "text-danger" })
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mr-2">Thêm Mới</button>
+                            <a href="/admin/productcategories" class="btn btn-warning">Quay Lại</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

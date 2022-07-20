@@ -172,6 +172,7 @@
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\NewsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductCategoriesController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -189,6 +190,14 @@
     <Compile Include="Migrations\202207190841553_updateActive.cs" />
     <Compile Include="Migrations\202207190841553_updateActive.designer.cs">
       <DependentUpon>202207190841553_updateActive.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207200841542_updateProductCategoryTable.cs" />
+    <Compile Include="Migrations\202207200841542_updateProductCategoryTable.designer.cs">
+      <DependentUpon>202207200841542_updateProductCategoryTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202207200900139_UpdatePC.cs" />
+    <Compile Include="Migrations\202207200900139_UpdatePC.designer.cs">
+      <DependentUpon>202207200900139_UpdatePC.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -1349,6 +1358,9 @@
     <Content Include="Areas\Admin\Views\News\Index.cshtml" />
     <Content Include="Areas\Admin\Views\News\Add.cshtml" />
     <Content Include="Areas\Admin\Views\News\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategories\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategories\Add.cshtml" />
+    <Content Include="Areas\Admin\Views\ProductCategories\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -1422,6 +1434,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207190841553_updateActive.resx">
       <DependentUpon>202207190841553_updateActive.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207200841542_updateProductCategoryTable.resx">
+      <DependentUpon>202207200841542_updateProductCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202207200900139_UpdatePC.resx">
+      <DependentUpon>202207200900139_UpdatePC.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
