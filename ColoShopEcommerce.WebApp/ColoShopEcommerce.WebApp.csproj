@@ -175,6 +175,7 @@
     <Compile Include="Areas\Admin\Controllers\ProductCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1419,6 +1420,7 @@
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Shared\_Client.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\CategoryProduct\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
