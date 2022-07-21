@@ -1,0 +1,102 @@
+﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.EF.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                @*Custom đường dẫn*@
+                <div>
+                    <a href="/admin/products/add" class="btn btn-primary">Thêm mới Sản Phẩm</a>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>STT #</th>
+                                        <th>Hình Ảnh</th>
+                                        <th>Danh Mục Sản Phẩm</th>
+                                        <th>Tiêu Đề</th>
+                                        <th>Ngày Tạo</th>
+                                        <th>Hiển Thị</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+
+                                        var i = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr id="trow_@item.Id">
+
+                                                <td>@i</td>
+                                                <td>
+                                                    <img src="~/UploadImageProducts/@item.Image" width="100" height="100" />
+
+                                                </td>
+                                                <td>@item.ProductCategory.Title</td>
+                                                <td>@item.Title</td>
+                                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                                <td>@(item.IsActive? "Hiển Thị": "Không Hiển Thị")</td>
+                                                <td>
+                                                    <a href="/admin/products/edit/@item.Id" class="btn btn-outline-primary">Sửa</a>
+                                                    <a href="#" data-id="@item.Id" class="btn btn-outline-primary btnDelete" onclick="showSuccessToast()">Xóa</a>
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="4"> Không có bản ghi nào ... </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial -->
+</div>
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var msg = confirm('Bạn có muốn xóa bản ghi này không ?');
+                if (msg === true) {
+                    $.ajax({
+                        url: '/admin/products/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+}
+

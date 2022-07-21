@@ -7,14 +7,16 @@ using System.Web;
 
 namespace ColoShopEcommerce.WebApp.Models.EF
 {
-    [Table("ProductImage")]
-    public class ProductImage
+    [Table("FILE")]
+    public class FILE
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+        public string FileName { get; set; }
+        public string Path { get; set; }
         public int ProductId { get; set; }
-        public string Image { get; set; }
-        public string IsDefault { get; set; }
+        public virtual Product Product { get; set; }
+
     }
 }
