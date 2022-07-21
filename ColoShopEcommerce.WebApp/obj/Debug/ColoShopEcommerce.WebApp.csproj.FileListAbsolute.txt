@@ -223,3 +223,5 @@ D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShop
 D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.updateActive.resources
 D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.updateProductCategoryTable.resources
 D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.UpdatePC.resources
+D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.updateFILE.resources
+D:\.Net Project\newproject\ColoShop-Ecommerce-develop\ColoShopEcommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.updateProduct.resources

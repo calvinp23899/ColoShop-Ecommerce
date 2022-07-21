@@ -1,0 +1,119 @@
+﻿@model ColoShopEcommerce.WebApp.Models.EF.Product
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Thêm Sản Phẩm</h4>
+                        @using (Html.BeginForm("Add", "Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            <div class="form-group">
+                                <label for="exampleInputName1">Tiêu Đề</label>
+                                @Html.TextBoxFor(x => x.Title, new { @class = "form-control", @placeholder = "Tiêu Đề" })
+                                @Html.ValidationMessageFor(x => x.Title, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail3">Mã Sản Phẩm </label>
+                                @Html.TextAreaFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "SP001" })
+                                @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputName1">Ảnh Sản Phẩm</label>
+                                <div class="col-md-10">
+                                    <input type="file" name="imageProducts" accept=".jpg,.png,.jpeg" />
+                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Giá Sản Phẩm</label>
+                                        @Html.TextAreaFor(x => x.Price, new { @class = "form-control", @placeholder = "đơn vị đồng" })
+                                        @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Số Lượng</label>
+                                        @Html.TextAreaFor(x => x.Quantity, new { @class = "form-control", @placeholder = "10" })
+                                        @Html.ValidationMessageFor(x => x.Quantity, null, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword4">Giá Sale</label>
+                                        @Html.TextAreaFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "Giá Sale" })
+                                        @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Danh Mục Sản Phẩm</label><br />
+                                @Html.DropDownListFor(x => x.ProductCategoryID, ViewBag.ProductCategory as SelectList,"-Chọn Danh Mục Sản Phẩm")
+                                @Html.ValidationMessageFor(x => x.ProductCategoryID, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputName1">Mô Tả</label>
+                                @Html.TextBoxFor(x => x.Description, new { @class = "form-control", @placeholder = "Mô Tả" })
+                                @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword4">Seo Title</label>
+                                @Html.TextBoxFor(x => x.SeoTitle, new { @class = "form-control", @placeholder = "Seotitle" })
+                                @Html.ValidationMessageFor(x => x.SeoTitle, null, new { @class = "text-danger" })
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">Seo Description</label>
+                                @Html.TextAreaFor(x => x.SeoDescription, new { @class = "form-control", @placeholder = "SeoDescription" })
+                                @Html.ValidationMessageFor(x => x.SeoDescription, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleSelectGender">SeoKeyword</label>
+                                @Html.TextBoxFor(x => x.SeoKeywords, new { @class = "form-control", @placeholder = "SeoKeyword" })
+                                @Html.ValidationMessageFor(x => x.SeoKeywords, null, new { @class = "text-danger" })
+                            </div>
+                            <div class="row">
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="exampleSelectGender">Trạng Thái Hiển Thị</label>
+                                        @Html.CheckBoxFor(x => x.IsActive, new { @checked = "@checked" })
+                                        @Html.ValidationMessageFor(x => x.IsActive, null, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="exampleSelectGender">Hot</label>
+                                        @Html.CheckBoxFor(x => x.IsHot, new { @checked = "@checked" })
+                                        @Html.ValidationMessageFor(x => x.IsHot, null, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group">
+                                        <label for="exampleSelectGender">Sale</label>
+                                        @Html.CheckBoxFor(x => x.IsSale, new { @checked = "@checked" })
+                                        @Html.ValidationMessageFor(x => x.IsSale, null, new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mr-2">Thêm Mới</button>
+                            <a href="/admin/products" class="btn btn-warning">Quay Lại</a>
+
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

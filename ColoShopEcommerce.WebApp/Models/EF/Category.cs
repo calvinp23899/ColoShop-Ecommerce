@@ -13,6 +13,7 @@ namespace ColoShopEcommerce.WebApp.Models.EF
         public Category()
         {
             this.News = new HashSet<News>();
+            this.Posts = new HashSet<Post>();
         }
 
         [Key]
