@@ -12,7 +12,21 @@ namespace ColoShopEcommerce.WebApp
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                name: "CategoryProduct",
+                url: "danh-muc-san-pham/{alias}-{id}",
+                defaults: new { controller = "Product", action = "ProductCategory", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Product",
+                url: "san-pham",
+                defaults: new { controller = "Product", action = "Index", alias = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Home",
+                url: "trang-chu",
+                defaults: new { controller = "Home", action = "Index", alias = UrlParameter.Optional }
+            );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
