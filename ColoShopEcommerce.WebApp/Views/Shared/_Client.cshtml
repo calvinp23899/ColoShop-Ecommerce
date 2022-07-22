@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_responsive.css">
     <link rel="stylesheet" type="text/css" href="~/Content/Client/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
     @RenderSection("css", required: false)
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="super_container">
@@ -68,14 +69,7 @@
                                 <a href="#">colo<span>shop</span></a>
                             </div>
                             <nav class="navbar">
-                                <ul class="navbar_menu">
-                                    <li><a href="@Url.Action("Index","Home")">home</a></li>
-                                    <li><a href="@Url.Action("Index","CategoryProduct")">shop</a></li>
-                                    <li><a href="#">promotion</a></li>
-                                    <li><a href="#">pages</a></li>
-                                    <li><a href="#">blog</a></li>
-                                    <li><a href="contact.html">contact</a></li>
-                                </ul>
+                                @Html.Action("MenuTop", "Menu")
                                 <ul class="navbar_user">
                                     <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-user" aria-hidden="true"></i></a></li>
@@ -140,7 +134,7 @@
         <a id="button"></a>
     </div>
 
-
+    @Scripts.Render("~/bundles/jquery")
     <script src="~/Content/Client/js/jquery-3.2.1.min.js"></script>
     <script src="~/Content/Client/styles/bootstrap4/popper.js"></script>
     <script src="~/Content/Client/styles/bootstrap4/bootstrap.min.js"></script>
@@ -149,6 +143,7 @@
     <script src="~/Content/Client/plugins/easing/easing.js"></script>
     <script src="~/Content/Client/js/custom.js"></script>
     <script src="~/Content/Client/js/categories_custom.js"></script>
+    <script src="~/Content/Client/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

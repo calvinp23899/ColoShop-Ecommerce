@@ -175,9 +175,10 @@
     <Compile Include="Areas\Admin\Controllers\ProductCategoriesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CategoryProductController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -212,6 +213,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CommonAbstract.cs" />
+    <Compile Include="Models\Common\Common.cs" />
     <Compile Include="Models\Common\Filter.cs" />
     <Compile Include="Models\EF\Advertisement.cs" />
     <Compile Include="Models\EF\Category.cs" />
@@ -1420,7 +1422,14 @@
     <Content Include="Views\Shared\_Admin.cshtml" />
     <Content Include="Views\Shared\_Client.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\CategoryProduct\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Menu\_MenuTop.cshtml" />
+    <Content Include="Views\Menu\_MenuProductCategory.cshtml" />
+    <Content Include="Views\Menu\_MenuNewArrival.cshtml" />
+    <Content Include="Views\Product\_ProductByCateId.cshtml" />
+    <Content Include="Views\Product\_ProductByCateNewArrival.cshtml" />
+    <Content Include="Views\Product\_HomeBestSeller.cshtml" />
+    <Content Include="Views\Product\ProductCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
