@@ -3,6 +3,9 @@
     ViewBag.Title = "ProductCategory";
     Layout = "~/Views/Shared/_Client.cshtml";
 }
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 
 <div class="container product_section_container">
     <div class="row">
@@ -102,7 +105,7 @@
                                                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>Hot</span></div>
                                                 }
                                                 <div class="product_info">
-                                                    <h6 class="product_name"><a href="@item.Alias">@item.Title</a></h6>
+                                                    <h6 class="product_name"><a href="/chi-tiet/@item.Alias-@item.Id">@item.Title</a></h6>
                                                     @if (item.PriceSale > 0)
                                                     {
                                                         <div class="product_price">@item.PriceSale Đ<span>@item.Price Đ</span></div>

@@ -2,8 +2,12 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Client.cshtml";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
 
 }
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
 
 <div class="container product_section_container">
     <div class="row">
@@ -29,16 +33,18 @@
                 </div>
 
                 <!-- Price Range Filtering -->
-                <div class="sidebar_section">
-                    <div class="sidebar_title">
-                        <h5>Filter by Price</h5>
-                    </div>
-                    <p>
-                        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-                    </p>
-                    <div id="slider-range"></div>
-                    <div class="filter_button"><span>filter</span></div>
-                </div>
+                @*<div class="sidebar_section">
+                        <div class="sidebar_title">
+                            <h5>Filter by Price</h5>
+                        </div>
+                        <p>
+                            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                            <input type="hidden" id="FromAmount">
+                            <input type="hidden" id="ToAmount">
+                        </p>
+                        <div id="slider-range"></div>
+                        <div class="filter_button"><span>filter</span></div>
+                    </div>*@
 
             </div>
 
@@ -103,14 +109,14 @@
                                                     <div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>Hot</span></div>
                                                 }
                                                 <div class="product_info">
-                                                    <h6 class="product_name"><a href="@item.Alias">@item.Title</a></h6>
+                                                    <h6 class="product_name"><a href="/chi-tiet/@item.Alias-@item.Id">@item.Title</a></h6>
                                                     @if (item.PriceSale > 0)
                                                     {
-                                                        <div class="product_price">@item.PriceSale Đ<span>@item.Price Đ</span></div>
+                                                        <div class="product_price">@String.Format(format, "{0:c0}", @item.PriceSale)<span>@String.Format(format, "{0:c0}", @item.Price)</span></div>
                                                     }
                                                     else
                                                     {
-                                                        <div class="product_price">@item.Price Đ</div>
+                                                        <div class="product_price">@String.Format(format, "{0:c0}", @item.Price)</div>
                                                     }
                                                 </div>
                                             </div>
@@ -157,6 +163,5 @@
         </div>
     </div>
 </div>
-
 
 

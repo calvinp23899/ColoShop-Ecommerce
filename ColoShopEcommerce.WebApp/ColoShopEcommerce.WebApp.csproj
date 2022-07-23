@@ -1430,6 +1430,7 @@
     <Content Include="Views\Product\_ProductByCateNewArrival.cshtml" />
     <Content Include="Views\Product\_HomeBestSeller.cshtml" />
     <Content Include="Views\Product\ProductCategory.cshtml" />
+    <Content Include="Views\Product\ProductDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
