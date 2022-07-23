@@ -21,6 +21,11 @@ namespace ColoShopEcommerce.WebApp.Controllers
             return View(items);
         }
 
+        public ActionResult ProductDetail(int? id)
+        {
+            var item = _dbContext.Products.Find(id);
+            return View(item);
+        }
         public ActionResult ProductCategory(string alias,int? id)
         {
             var items = _dbContext.Products.ToList();
@@ -49,5 +54,7 @@ namespace ColoShopEcommerce.WebApp.Controllers
             var items = _dbContext.Products.Where(x=>x.IsActive && x.IsHot).Take(12).ToList();
             return PartialView("_HomeBestSeller", items);
         }
+
+
     }
 }

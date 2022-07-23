@@ -365,8 +365,8 @@ jQuery(document).ready(function($)
 		            filter: function()
 		            {
 		            	var priceRange = $('#amount').val();
-			        	var priceMin = parseFloat(priceRange.split('-')[0].replace('$', ''));
-			        	var priceMax = parseFloat(priceRange.split('-')[1].replace('$', ''));
+			        	var priceMin = parseFloat(priceRange.split('-')[0].replace('d', ''));
+			        	var priceMax = parseFloat(priceRange.split('-')[1].replace('d', ''));
 			        	var itemPrice = $(this).find('.product_price').clone().children().remove().end().text().replace( '$', '' );
 
 			        	return (itemPrice > priceMin) && (itemPrice < priceMax);
@@ -397,11 +397,13 @@ jQuery(document).ready(function($)
 			values: [ 0, 580 ],
 			slide: function( event, ui )
 			{
-				$( "#amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+				$("#amount").val("D" + ui.values[0] + " - D" + ui.values[ 1 ] );
+				$('#FromAmount').val(ui.values[0]);
+				$('#ToAmount').val(ui.values[1] );
 			}
 		});
 			
-		$( "#amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) + " - $" + $( "#slider-range" ).slider( "values", 1 ) );
+		$( "#amount" ).val( "d" + $( "#slider-range" ).slider( "values", 0 ) + " - d" + $( "#slider-range" ).slider( "values", 1 ) );
     }
 
     /* 
