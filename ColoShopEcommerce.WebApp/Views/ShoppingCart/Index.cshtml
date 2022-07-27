@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.CartItem>
+@using ColoShopEcommerce.WebApp.Models.Common
+@{
+    ViewBag.Title = "Giỏ Hàng";
+    Layout = "~/Views/Shared/_Client.cshtml";
+}
+
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_styles.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="~/Content/Client/plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
+
+<div class="container product_section_container">
+    <div class="row">
+        <div class="col product_section clearfix">
+
+            <!-- Breadcrumbs -->
+
+            <div class="breadcrumbs d-flex flex-row align-items-center">
+                <ul>
+                    <li><a href="#">Trang Chủ</a></li>
+                    <li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>Giỏ Hàng</a></li>
+                </ul>
+            </div>
+
+            <!-- Cart -->
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table ">
+                        <thead>
+                            <tr class="text-center">
+                                <th>STT</th>
+                                <th>Ảnh</th>
+                                <th>Tên Sản Phẩm</th>
+                                <th>Giá</th>
+                                <th>Số Lượng</th>
+                                <th>Thành tiền</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null && Model.Any())
+                            {
+                                var i = 0;
+                                var totalPrice = decimal.Zero;
+                                foreach (var item in Model)
+                                {
+                                    totalPrice += item.TotalPrice;
+                                    <tr class="text-center" id="trow_@item.ProductId">
+                                        <td>@(i+1)</td>
+                                        <td><img src="/UploadImageProducts/@item.Image" width="150" height="150" /></td>
+                                        <td>@item.ProductName</td>
+                                        <td>@Common.FormatCurrency(item.Price, 0)</td>
+                                        <td>
+                                            <input class="text-center" type="number" value="@item.Quantity" name="NewAmount" min="1" max="20" />
+
+                                        </td>
+                                        <td>@Common.FormatCurrency(item.TotalPrice, 0)VND</td>
+                                        <td>
+                                            <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
+                                        </td>
+                                    </tr>
+                                    i++;
+                                }
+                                <tr>
+                                    <th colspan="6" class="text-right"> Tổng Tiền: </th>
+                                    <th class="text-center">@Common.FormatCurrency(totalPrice, 0) VND</th>
+                                    <td></td>
+                                </tr>
+
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td><a href="/san-pham"> Giỏ hàng chưa có sản phẩm.</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+
+
+                    </table>
+                </div>
+            </div>
+
+            <!-- Check Out -->
+            <div class="main_content">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <button id="123" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Thanh Toán</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
