@@ -13,8 +13,24 @@ namespace ColoShopEcommerce.WebApp.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            Cart cart = (Cart)Session["Cart"];
+            if(cart != null)
+            {
+                return View(cart.CartItems);
+            }
             return View();
         }
+
+        public ActionResult ShowCount()
+        {
+            Cart cart = (Cart)Session["Cart"];
+            if(cart != null)
+            {
+                return Json(new {Count = cart.CartItems.Count}, JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { Count = 0 }, JsonRequestBehavior.AllowGet);
+        }
+
 
         [HttpPost]
         public ActionResult AddToCart(int id, int quantity)
@@ -48,6 +64,23 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 cart.AddToCart(item, quantity);
                 Session["Cart"] = cart;
                 code = new { Success = true, msg = "Thêm Sản Phẩm Thành Công", code = 1 , Count = cart.CartItems.Count};
+            }
+            return Json(code);
+        }
+
+        [HttpPost]
+        public ActionResult DeleteCartItem(int id)
+        {
+            var code = new {Success = false, msg ="", code = -1, Count = 0};
+            Cart cart = (Cart)Session["Cart"];
+            if(cart != null)
+            {
+                var checkProduct = cart.CartItems.SingleOrDefault(x => x.ProductId == id);
+                if (checkProduct != null)
+                {
+                    cart.Remove(id);
+                    code = new { Success = true, msg = "", code = 1, Count = cart.CartItems.Count };
+                }
             }
             return Json(code);
         }
