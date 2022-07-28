@@ -38,7 +38,7 @@
                                 <th></th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-center">
                             @if (Model != null && Model.Any())
                             {
                                 var i = 0;
@@ -46,16 +46,16 @@
                                 foreach (var item in Model)
                                 {
                                     totalPrice += item.TotalPrice;
-                                    <tr class="text-center" id="trow_@item.ProductId">
+                                    <tr  id="trow_@item.ProductId">
                                         <td>@(i+1)</td>
                                         <td><img src="/UploadImageProducts/@item.Image" width="150" height="150" /></td>
                                         <td>@item.ProductName</td>
-                                        <td>@Common.FormatCurrency(item.Price, 0)</td>
+                                        <td class="Product-Price">@Common.FormatCurrency(item.Price, 0)</td>
                                         <td>
-                                            <input class="text-center" type="number" value="@item.Quantity" name="NewAmount" min="1" max="20" />
+                                            <input class="text-center ipUpdate" id="quantityUpdate_@item.ProductId" type="number" data-id="@item.ProductId" value="@item.Quantity" name="NewAmount" min="1" max="20" />
 
                                         </td>
-                                        <td>@Common.FormatCurrency(item.TotalPrice, 0)VND</td>
+                                        <td class="newTotalPrice_@item.ProductId">@Common.FormatCurrency(item.TotalPrice, 0)VND</td>
                                         <td>
                                             <a href="#" data-id="@item.ProductId" class="btn btn-sm btn-danger btnDelete">Xóa</a>
                                         </td>
@@ -64,7 +64,7 @@
                                 }
                                 <tr>
                                     <th colspan="6" class="text-right"> Tổng Tiền: </th>
-                                    <th class="text-center">@Common.FormatCurrency(totalPrice, 0) VND</th>
+                                    <th class="text-center subtotal">@Common.FormatCurrency(totalPrice, 0) VND</th>
                                     <td></td>
                                 </tr>
 
@@ -86,7 +86,7 @@
             <!-- Check Out -->
             <div class="main_content">
                 <div class="row">
-                    <div class="col-lg-7">
+                    <div class="text-right">
                         <button id="123" type="submit" class="newsletter_submit_btn trans_300" value="Submit">Thanh Toán</button>
                     </div>
                 </div>
