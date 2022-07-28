@@ -1,4 +1,5 @@
 ﻿using ColoShopEcommerce.WebApp.Models;
+using ColoShopEcommerce.WebApp.Models.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,12 +14,13 @@ namespace ColoShopEcommerce.WebApp.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
+            var code = new{Success = false};
             Cart cart = (Cart)Session["Cart"];
             if(cart != null)
             {
                 return View(cart.CartItems);
             }
-            return View();
+            return View(code);
         }
 
         public ActionResult ShowCount()
@@ -64,6 +66,19 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 cart.AddToCart(item, quantity);
                 Session["Cart"] = cart;
                 code = new { Success = true, msg = "Thêm Sản Phẩm Thành Công", code = 1 , Count = cart.CartItems.Count};
+            }
+            return Json(code);
+        }
+        [HttpPost]
+        public ActionResult UpdateCartItem(int id, int quantityUpdate)
+        {
+            var code = new { Success = false, newTotalPrice = 0, subTotalPrice = 0 };
+            Cart cart = (Cart)Session["Cart"];
+            if(cart != null)
+            {
+                var totalPrice = cart.UpdateQuantityCart(id, quantityUpdate);
+                var _subtotalPrice = cart.GetTotalPrice();
+                return Json(new { Success = true, newTotalPrice = Common.FormatCurrency(totalPrice,0) + "VND", subTotalPrice =Common.FormatCurrency(_subtotalPrice,0) + "VND"  });
             }
             return Json(code);
         }
