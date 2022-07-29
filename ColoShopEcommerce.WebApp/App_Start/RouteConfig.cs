@@ -23,6 +23,11 @@ namespace ColoShopEcommerce.WebApp
                 defaults: new { controller = "ShoppingCart", action = "Index", alias = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "CheckOut",
+                url: "thanh-toan",
+                defaults: new { controller = "CheckOut", action = "Index", alias = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "DetailProduct",
                 url: "chi-tiet/{alias}-{id}",
                 defaults: new { controller = "Product", action = "ProductDetail", alias = UrlParameter.Optional }

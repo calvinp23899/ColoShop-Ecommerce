@@ -1,0 +1,566 @@
+﻿
+@import url('../css.css');
+
+html,
+body {
+    height: 100%;
+}
+
+.floatleft {
+    float: left
+}
+
+.floatright {
+    float: right
+}
+
+.alignleft {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px
+}
+
+.alignright {
+    float: right;
+    margin-left: 15px;
+    margin-bottom: 15px
+}
+
+.aligncenter {
+    display: block;
+    margin: 0 auto 15px
+}
+
+a:focus {
+    outline: 0px solid
+}
+
+img {
+    max-width: 100%;
+    height: auto
+}
+
+.fix {
+    overflow: hidden
+}
+
+p {
+    margin: 0 0 15px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0 0 10px;
+    font-family: 'Open Sans', sans-serif;
+    color: #333;
+    font-weight: 700;
+}
+
+:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+}
+
+a {
+    transition: all 0.3s ease 0s;
+    text-decoration: none;
+}
+
+    a:hover {
+        color: #ec4445;
+        text-decoration: none;
+    }
+
+    a:active,
+    a:hover {
+        outline: 0 none;
+    }
+
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+    outline: medium none;
+    outline-offset: -2px;
+}
+
+ul {
+    list-style: outside none none;
+    margin: 0;
+    padding: 0
+}
+
+.clear {
+    clear: both
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #666;
+}
+
+::-moz-selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+::selection {
+    background: #b3d4fc;
+    text-shadow: none;
+}
+
+.browserupgrade {
+    margin: 0.2em 0;
+    background: #ccc;
+    color: #000;
+    padding: 0.2em 0;
+}
+
+
+.mb-70 {
+    margin-bottom: 70px;
+}
+
+/*----------------------------------------*/
+/*  27. Checkout
+/*----------------------------------------*/
+
+.coupon-area,
+.checkout-area {
+    background: #fff;
+    overflow: hidden;
+}
+
+.different-address {
+    margin-top: 30px;
+}
+
+.coupon-accordion h3 {
+    background-color: #f7f6f7;
+    border-top: 3px solid #f07c29;
+    color: #333;
+    font-family: "Rufina", serif;
+    font-size: 14px;
+    font-weight: 400;
+    list-style: outside none none;
+    margin: 0 0 2em;
+    padding: 1em 2em 1em 3.5em;
+    position: relative;
+    width: auto;
+}
+
+    .coupon-accordion h3::before {
+        color: #1e85be;
+        content: "";
+        display: inline-block;
+        font-family: fontawesome;
+        left: 1.5em;
+        position: absolute;
+        top: 1em;
+    }
+
+.coupon-accordion span {
+    color: #6f6f6f;
+    cursor: pointer;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+    .coupon-accordion span:hover,
+    p.lost-password a:hover {
+        color: #F07C29;
+    }
+
+.coupon-content {
+    border: 1px solid #e5e5e5;
+    display: none;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+
+.coupon-info p.coupon-text {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.coupon-info p {
+    margin-bottom: 0;
+}
+
+    .coupon-info p.form-row-first label,
+    .coupon-info p.form-row-last label {
+        display: block;
+    }
+
+.coupon-accordion span {
+    color: #333;
+    cursor: pointer;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.coupon-info p.form-row-first label span.required,
+.coupon-info p.form-row-last label span.required {
+    color: #FF1111;
+    font-weight: 700;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.coupon-info p.form-row-first input,
+.coupon-info p.form-row-last input {
+    border: 1px solid #e5e5e5;
+    height: 36px;
+    margin: 0 0 14px;
+    max-width: 100%;
+    padding: 0 0 0 10px;
+    width: 370px;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.buttons-cart input,
+.coupon input[type="submit"],
+.buttons-cart a,
+.coupon-info p.form-row input[type="submit"] {
+    background: #252525 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    color: #fff;
+    display: inline-block;
+    float: left;
+    font-size: 12px;
+    font-weight: 700;
+    height: 40px;
+    line-height: 40px;
+    margin-right: 15px;
+    padding: 0 15px;
+    text-shadow: none;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    white-space: nowrap;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.form-row > label {
+    margin-top: 7px;
+}
+
+.coupon-info p.form-row input[type="checkbox"] {
+    position: relative;
+    top: 2px;
+}
+
+p.lost-password {
+    margin-top: 15px;
+}
+
+    p.lost-password a {
+        color: #333;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+.coupon-checkout-content {
+    display: none;
+    margin-bottom: 30px;
+}
+
+p.checkout-coupon input[type="text"] {
+    height: 36px;
+    padding-left: 10px;
+    width: 170px;
+}
+
+p.checkout-coupon input[type="submit"] {
+    background: #333 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 0;
+    color: #fff;
+    height: 36px;
+    margin-left: 6px;
+    padding: 5px 10px;
+    transition: all 0.3s ease 0s;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+    .coupon-info p.form-row input[type="submit"]:hover,
+    p.checkout-coupon input[type="submit"]:hover {
+        background: #F07C29 none repeat scroll 0 0;
+    }
+
+.coupon-accordion span:hover,
+p.lost-password a:hover {
+    color: #F07C29;
+}
+
+.checkbox-form h3 {
+    border-bottom: 1px solid #e5e5e5;
+    font-size: 30px;
+    margin: 0 0 20px;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.country-select {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+    .country-select label,
+    .checkout-form-list label {
+        color: #333;
+        display: block;
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0 0 5px;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+        .country-select label span.required,
+        .checkout-form-list label span.required {
+            color: #FF1111;
+            font-family: 'Rufina', serif;
+            font-weight: 400;
+        }
+
+    .country-select select {
+        height: 40px;
+        width: 100%;
+        border: 1px solid #ddd;
+        padding-left: 10px;
+        font-size: 13px;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+.checkout-form-list {
+    clear: both;
+    margin-bottom: 30px;
+}
+
+    .checkout-form-list input {
+        background: #fff none repeat scroll 0 0;
+        border: 1px solid #e5e5e5;
+        border-radius: 0;
+        height: 42px;
+        padding: 0 0 0 10px;
+        width: 100%;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+        .checkout-form-list input::-moz-placeholder,
+        .order-notes textarea::-moz-placeholder {
+            color: #555 !important;
+            opacity: 1;
+        }
+
+        .checkout-form-list input::-webkit-input-placeholder,
+        .order-notes textarea::-webkit-input-placeholder {
+            color: #555 !important;
+            opacity: 1;
+        }
+
+        .checkout-form-list input#cbox {
+            float: left;
+            height: 0;
+            position: relative;
+            width: 2%;
+        }
+
+.create-acc label {
+    float: left;
+    width: 80%;
+    padding-left: 14px;
+}
+
+.create-account p {
+    font-size: 13px;
+    color: #777;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.ship-different-title label {
+    padding-right: 22px;
+    font-size: 19px;
+}
+
+.order-notes textarea {
+    height: 90px;
+    padding: 15px;
+    width: 100%;
+    color: #333;
+}
+
+.your-order {
+    background: #f2f2f2 none repeat scroll 0 0;
+    padding: 30px 40px 45px;
+}
+
+    .your-order h3 {
+        border-bottom: 1px solid #d8d8d8;
+        font-size: 30px;
+        margin: 0 0 20px;
+        padding-bottom: 10px;
+        text-transform: uppercase;
+        width: 100%;
+        color: #252525;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+.your-order-table table {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: medium none;
+    width: 100%;
+}
+
+    .your-order-table table th {
+        font-weight: normal;
+        text-align: center;
+        text-transform: uppercase;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 250px;
+    }
+
+    .your-order-table table th,
+    .your-order-table table td {
+        border-bottom: 1px solid #d8d8d8;
+        border-right: medium none;
+        font-size: 14px;
+        padding: 15px 0;
+        text-align: center;
+        color: #333;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+    .your-order-table table .shipping ul li input {
+        position: relative;
+        top: 2px;
+    }
+
+    .your-order-table table .shipping th {
+        vertical-align: top;
+    }
+
+    .your-order-table table .order-total th {
+        border-bottom: medium none;
+        font-size: 18px;
+    }
+
+    .your-order-table table .order-total td {
+        border-bottom: medium none;
+    }
+
+    .your-order-table table tr.order-total td span {
+        color: #ec4445;
+        font-size: 20px;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+.panel-default > .panel-heading {
+    background: none;
+    transition: .3s;
+    position: relative;
+    padding: 0px;
+}
+
+.panel-group .panel {
+    border: medium none;
+    border-radius: 0;
+    box-shadow: none;
+    margin-bottom: 10px;
+}
+
+.payment-accordion .panel-group .panel {
+    background: transparent;
+}
+
+.payment-accordion .panel-title a {
+    color: #333;
+    font-size: 16px;
+    padding-left: 25px;
+    position: relative;
+    text-decoration: none;
+    text-transform: capitalize;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.payment-accordion .panel-body {
+    border-top: medium none !important;
+    padding: 0;
+}
+
+    .payment-accordion .panel-body p {
+        font-size: 14px;
+        margin-bottom: 0;
+        color: #333;
+        font-family: 'Rufina', serif;
+        font-weight: 400;
+    }
+
+.payment-accordion .panel-title a img {
+    height: 35px;
+    margin-left: 15px;
+}
+
+.payment-accordion .panel-heading a::before {
+    content: "";
+    cursor: pointer;
+    display: block;
+    font-family: fontawesome;
+    font-size: 20px;
+    left: 0;
+    position: absolute;
+    top: 0px;
+}
+
+.payment-accordion .panel-heading a.collapsed::before {
+    content: " ";
+}
+
+.payment-accordion .panel-group .panel {
+    margin-bottom: 20px;
+}
+
+.order-button-payment input:hover {
+    background: #e61719 none repeat scroll 0 0;
+}
+
+.order-button-payment input {
+    background: #ec4445 none repeat scroll 0 0;
+    border: medium none;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    height: 50px;
+    margin: 20px 0 0;
+    padding: 0;
+    text-transform: uppercase;
+    transition: all 0.3s ease 0s;
+    width: 100%;
+    font-family: 'Rufina', serif;
+    font-weight: 400;
+}
+
+.your-order {
+    margin-bottom: 0px;
+}

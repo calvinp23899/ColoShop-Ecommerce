@@ -14,13 +14,13 @@ namespace ColoShopEcommerce.WebApp.Controllers
         // GET: ShoppingCart
         public ActionResult Index()
         {
-            var code = new{Success = false};
+            
             Cart cart = (Cart)Session["Cart"];
             if(cart != null)
             {
                 return View(cart.CartItems);
             }
-            return View(code);
+            return View();
         }
 
         public ActionResult ShowCount()
@@ -86,7 +86,7 @@ namespace ColoShopEcommerce.WebApp.Controllers
         [HttpPost]
         public ActionResult DeleteCartItem(int id)
         {
-            var code = new {Success = false, msg ="", code = -1, Count = 0};
+            var code = new {Success = false, Count = 0, subTotalPrice = ""};
             Cart cart = (Cart)Session["Cart"];
             if(cart != null)
             {
@@ -94,7 +94,9 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 if (checkProduct != null)
                 {
                     cart.Remove(id);
-                    code = new { Success = true, msg = "", code = 1, Count = cart.CartItems.Count };
+                    var _totalprice = cart.GetTotalPrice();
+                    code = new { Success = true, Count = cart.CartItems.Count, subTotalPrice = Common.FormatCurrency(_totalprice, 0) + "VND"  };
+
                 }
             }
             return Json(code);
