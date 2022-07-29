@@ -33,7 +33,7 @@
                     if (rs.Success) {
                         $('#checkout_items').html(rs.Count);
                         $('#trow_' + id).remove();
-                        LoadCart();
+                        $('.subtotal').html(rs.subTotalPrice);
                     }
                 }
             });
@@ -51,15 +51,15 @@ function ShowCount() {
     });
 }
 
-function LoadCart() {
-    $.ajax({
-        url: '/shoppingcart/Index',
-        type: 'GET',
-        success: function (rs) {
-            $('#checkout_items').html(rs);
-        }
-    });
-}
+//function LoadCart() {
+//    $.ajax({
+//        url: '/shoppingcart/Index',
+//        type: 'GET',
+//        success: function (rs) {
+//            $('#checkout_items').html(rs);
+//        }
+//    });
+//}
 
 $(document).ready(function () {
     $('.ipUpdate').bind('click keyup', function () {
