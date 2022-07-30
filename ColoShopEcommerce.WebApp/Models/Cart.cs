@@ -37,15 +37,15 @@ namespace ColoShopEcommerce.WebApp.Models
 
         }
 
-        public void UpdateQuantity(int id, int Quantity)
-        {
-            var checkExist = CartItems.SingleOrDefault(x => x.ProductId == id);
-            if (checkExist != null)
-            {
-                checkExist.Quantity = Quantity;
-                checkExist.TotalPrice = checkExist.Price * checkExist.Quantity;            
-            }
-        }
+        //public void UpdateQuantity(int id, int Quantity)
+        //{
+        //    var checkExist = CartItems.SingleOrDefault(x => x.ProductId == id);
+        //    if (checkExist != null)
+        //    {
+        //        checkExist.Quantity = Quantity;
+        //        checkExist.TotalPrice = checkExist.Price * checkExist.Quantity;            
+        //    }
+        //}
 
         public decimal UpdateQuantityCart(int id, int Quantity)
         {
