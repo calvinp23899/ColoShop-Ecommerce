@@ -1,11 +1,9 @@
-﻿
+﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.CartItem>
 @using ColoShopEcommerce.WebApp.Models.Common
+@using ColoShopEcommerce.WebApp.Models
 @{
     ViewBag.Title = "Thanh Toán";
     Layout = "~/Views/Shared/_Client.cshtml";
-
-
-
 }
 <link rel="stylesheet" type="text/css" href="~/Content/Client/styles/main_styles.css">
 <link rel="stylesheet" type="text/css" href="~/Content/Client/styles/categories_styles.css">
@@ -26,42 +24,49 @@
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                     <div class="checkbox-form">
                         <h3>Thông Tin Vận Chuyển</h3>
-                        <div class="row">
+                        @using (Ajax.BeginForm("CheckOut", "CheckOut", new AjaxOptions
+                        {
+                            HttpMethod = "POST",
+                            UpdateTargetId = "load_data"
+                        }))
+                        {
+                            
+                            <div class="row">
+                                @Html.AntiForgeryToken()
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
+                                    <div class="checkout-form-list ">
+                                        <label>Tên Khách Hàng <span class="required">*</span></label>
+                                        <input type="text" placeholder="Họ và tên" name="CustomerName" required="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                    <div class="checkout-form-list">
+                                        <label>Số Điện Thoại <span class="required">*</span></label>
+                                        <input type="tel" placeholder="" name="Phone" required="" pattern="[0][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]">
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="checkout-form-list">
+                                        <label>Địa Chỉ <span class="required">*</span></label>
+                                        <input type="text" placeholder="địa chỉ nhà, tên đường, phường, quận, thành phố." name="Address" required="">
+                                    </div>
+                                </div>
 
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 ">
-                                <div class="checkout-form-list">
-                                    <label>Tên Khách Hàng <span class="required">*</span></label>
-                                    <input type="text" placeholder="">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="checkout-form-list">
+                                        <label>Địa Chỉ Email <span class="required">*</span></label>
+                                        <input type="email" placeholder="" name="Email" required="">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-                                <div class="checkout-form-list">
-                                    <label>Số Điện Thoại <span class="required">*</span></label>
-                                    <input type="text" placeholder="">
+                            <div class="payment-method">
+
+                                <div class="order-button-payment">
+                                    <input type="submit" value="Thanh Toán">
                                 </div>
                             </div>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="checkout-form-list">
-                                    <label>Địa Chỉ <span class="required">*</span></label>
-                                    <input type="text" placeholder="địa chỉ nhà, tên đường, phường, quận, thành phố.">
-                                </div>
-                            </div>
+                        }
 
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                <div class="checkout-form-list">
-                                    <label>Địa Chỉ Email <span class="required">*</span></label>
-                                    <input type="email" placeholder="">
-                                </div>
-                            </div>
-
-
-                        </div>
-                        <div class="payment-method">
-
-                            <div class="order-button-payment">
-                                <input type="submit" value="Thanh Toán">
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -78,22 +83,27 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="cart_item">
-                                        <td class="product-name">
-                                            Vestibulum suscipit <strong class="product-quantity"> × 1</strong>
-                                        </td>
-                                        <td class="product-total">
-                                            <span class="amount">£165.00</span>
-                                        </td>
-                                    </tr>
-                                    <tr class="cart_item">
-                                        <td class="product-name">
-                                            Vestibulum suscipit	<strong class="product-quantity"> × 1</strong>
-                                        </td>
-                                        <td class="product-total">
-                                            <span class="amount">£50.00</span>
-                                        </td>
-                                    </tr>
+                                    @if (Model != null && Model.Any())
+                                    {
+                                        foreach (var item in Model)
+                                        {
+                                            <tr class="cart_item">
+                                            <td class="product-name">
+                                                @item.ProductName <strong class="product-quantity"> × @item.Quantity</strong>
+                                            </td>
+                                            <td class="product-total">
+                                                <span class="amount">@Common.FormatCurrency(@item.TotalPrice, 0) VND</span>
+                                            </td>
+                                        </tr>
+                                        }
+                                    }
+                                    else 
+                                    { 
+                                        <tr>
+                                            <td> Chưa có giỏ hàng .</td>
+                                        </tr>
+                                    }
+
                                 </tbody>
                                 <tfoot>
                                     <tr class="shipping">
@@ -110,14 +120,24 @@
                                     </tr>
                                     <tr class="order-total">
                                         <th>Tổng Tiền</th>
-                                        <td>
-                                            <strong><span class="amount">£215.00</span></strong>
-                                        </td>
+                                        @if (ViewBag.subTotalPrice > 0)
+                                        {
+                                            <td>
+                                                <strong><span class="amount">@Common.FormatCurrency(@ViewBag.subTotalPrice, 0) VND </span></strong>
+                                            </td>
+                                        }
+                                        else
+                                        {
+                                            <td>
+                                                <strong><span class="amount">0 VND </span></strong>
+                                            </td>
+                                        }
+
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>

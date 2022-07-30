@@ -46,6 +46,7 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 {
                     cart = new Cart();
                 }
+                // Add CartItem
                 CartItem item = new CartItem
                 {
                     ProductId = checkProduct.Id,

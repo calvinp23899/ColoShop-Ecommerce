@@ -23,6 +23,7 @@
     $('body').on('click', '.btnDelete', function (e) {
         e.preventDefault();
         var id = $(this).data('id');
+
         var cofirmMsg = confirm('Bạn có muốn xóa sản phẩm này khỏi giỏ hàng không ?')
         if (cofirmMsg == true) {
             $.ajax({
@@ -34,6 +35,9 @@
                         $('#checkout_items').html(rs.Count);
                         $('#trow_' + id).remove();
                         $('.subtotal').html(rs.subTotalPrice);
+                        if (rs.Count < 1) {
+                            $('#btnCheckout').hide();
+                        }
                     }
                 }
             });
@@ -50,16 +54,6 @@ function ShowCount() {
         }
     });
 }
-
-//function LoadCart() {
-//    $.ajax({
-//        url: '/shoppingcart/Index',
-//        type: 'GET',
-//        success: function (rs) {
-//            $('#checkout_items').html(rs);
-//        }
-//    });
-//}
 
 $(document).ready(function () {
     $('.ipUpdate').bind('click keyup', function () {
