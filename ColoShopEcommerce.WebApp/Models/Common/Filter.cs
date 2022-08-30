@@ -7,6 +7,7 @@ namespace ColoShopEcommerce.WebApp.Models.Common
 {
     public class Filter
     {
+        #region Filter format SEO
         private static readonly string[] VietNamChar = new string[]
         {
             "aAeEoOuUiIdDyY",
@@ -61,5 +62,6 @@ namespace ColoShopEcommerce.WebApp.Models.Common
             str = str.Replace("=", "");
             return str.ToLower();
         }
+        #endregion
     }
 }

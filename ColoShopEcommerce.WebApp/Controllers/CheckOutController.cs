@@ -1,4 +1,5 @@
 ﻿using ColoShopEcommerce.WebApp.Models;
+using ColoShopEcommerce.WebApp.Models.Common;
 using ColoShopEcommerce.WebApp.Models.EF;
 using System;
 using System.Collections.Generic;
@@ -53,7 +54,31 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 }));
                 _dbContext.Orders.Add(order);
                 _dbContext.SaveChanges();
-                cart.ClearCart();
+                // Send Mail
+                var strProduct = "";
+                var price = decimal.Zero;
+                var totapPrice = decimal.Zero;
+                foreach(var item in cart.CartItems)
+                {
+                    strProduct += "<tr>";
+                    strProduct += "<td>"+item.ProductName+"</td>";
+                    strProduct += "<td>"+item.Quantity+"</td>";
+                    strProduct += "<td>"+ Common.FormatCurrency(item.TotalPrice,0)+"</td>";
+                    strProduct += "</tr>";
+                    price += item.Price * item.Quantity;
+                }
+                totapPrice = price;
+                string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/Templates/send2.html"));
+                contentCustomer = contentCustomer.Replace("{{Bill}}", order.Code);
+                contentCustomer = contentCustomer.Replace("{{Product}}", strProduct);
+                contentCustomer = contentCustomer.Replace("{{CustomerName}}", order.CustomerName);
+                contentCustomer = contentCustomer.Replace("{{Phone}}", order.Phone);
+                contentCustomer = contentCustomer.Replace("{{Email}}", order.Email);
+                contentCustomer = contentCustomer.Replace("{{Address}}", order.Email);
+                contentCustomer = contentCustomer.Replace("{{Price}}", Common.FormatCurrency(price,0));
+                contentCustomer = contentCustomer.Replace("{{TotalPrice}}", Common.FormatCurrency(totapPrice,0));
+                Common.SendEmail("ShopOnline", "Don Hang #" + order.Code, contentCustomer.ToString(), order.Email);
+                cart.ClearCart();   
                 return View();
             }
             return View("Index");

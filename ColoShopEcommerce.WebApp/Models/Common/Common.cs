@@ -1,13 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 
 namespace ColoShopEcommerce.WebApp.Models.Common
 {
     public class Common
     {
+        #region Format Currency VND
         public static string FormatCurrency(object value, int comma = 2)
         {
             bool isNumber = IsNumeric(value);
@@ -28,7 +32,6 @@ namespace ColoShopEcommerce.WebApp.Models.Common
             str = string.Format("{"+ snumformat+"}", GT);
             return str;
         }
-
         private static bool IsNumeric(object value)
         {
             return value is sbyte
@@ -43,5 +46,45 @@ namespace ColoShopEcommerce.WebApp.Models.Common
                 || value is decimal
                 || value is double;
         }
+        #endregion
+
+        #region Email Setting
+        private static string password = ConfigurationManager.AppSettings["PasswordEmail"];
+        private static string Email = ConfigurationManager.AppSettings["Email"];
+        public static bool SendEmail(string name, string subject, string content, string toMail)
+        {
+            bool rs = false;
+            try
+            {
+                MailMessage message = new MailMessage();
+                var smtp = new SmtpClient();
+                {
+                    smtp.Host = "smtp.gmail.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential()
+                    {
+                        UserName = Email,
+                        Password = password,
+                    };
+                }
+                MailAddress fromAddress = new MailAddress(Email ,name);
+                message.From = fromAddress;
+                message.To.Add(toMail);
+                message.Subject = subject;
+                message.IsBodyHtml = true;
+                message.Body = content;
+                smtp.Send(message);
+                rs = true;
+            }
+            catch(Exception ex)
+            {
+                rs = false;
+            }
+            return rs;
+        }
+        #endregion
     }
 }
