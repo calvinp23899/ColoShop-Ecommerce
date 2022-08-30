@@ -1020,6 +1020,8 @@
     <Content Include="Content\Client\styles\responsive.css" />
     <Content Include="Content\Client\styles\single_responsive.css" />
     <Content Include="Content\Client\styles\single_styles.css" />
+    <Content Include="Content\Templates\send1.html" />
+    <Content Include="Content\Templates\send2.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
