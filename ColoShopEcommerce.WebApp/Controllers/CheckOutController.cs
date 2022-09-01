@@ -57,7 +57,7 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 // Send Mail
                 var strProduct = "";
                 var price = decimal.Zero;
-                var totapPrice = decimal.Zero;
+                var totalPrice = decimal.Zero;
                 foreach(var item in cart.CartItems)
                 {
                     strProduct += "<tr>";
@@ -67,17 +67,18 @@ namespace ColoShopEcommerce.WebApp.Controllers
                     strProduct += "</tr>";
                     price += item.Price * item.Quantity;
                 }
-                totapPrice = price;
+                totalPrice = price;
                 string contentCustomer = System.IO.File.ReadAllText(Server.MapPath("~/Content/Templates/send2.html"));
                 contentCustomer = contentCustomer.Replace("{{Bill}}", order.Code);
                 contentCustomer = contentCustomer.Replace("{{Product}}", strProduct);
                 contentCustomer = contentCustomer.Replace("{{CustomerName}}", order.CustomerName);
                 contentCustomer = contentCustomer.Replace("{{Phone}}", order.Phone);
                 contentCustomer = contentCustomer.Replace("{{Email}}", order.Email);
-                contentCustomer = contentCustomer.Replace("{{Address}}", order.Email);
+                contentCustomer = contentCustomer.Replace("{{Address}}", order.Address);
+                contentCustomer = contentCustomer.Replace("{{Date}}", order.CreatedDate.ToString("dd/MM/yyyy"));
                 contentCustomer = contentCustomer.Replace("{{Price}}", Common.FormatCurrency(price,0));
-                contentCustomer = contentCustomer.Replace("{{TotalPrice}}", Common.FormatCurrency(totapPrice,0));
-                Common.SendEmail("ShopOnline", "Don Hang #" + order.Code, contentCustomer.ToString(), order.Email);
+                contentCustomer = contentCustomer.Replace("{{TotalPrice}}", Common.FormatCurrency(totalPrice,0));
+                Common.SendEmail("ColoShop", "Đơn Hàng #" + order.Code, contentCustomer.ToString(), order.Email);
                 cart.ClearCart();   
                 return View();
             }
