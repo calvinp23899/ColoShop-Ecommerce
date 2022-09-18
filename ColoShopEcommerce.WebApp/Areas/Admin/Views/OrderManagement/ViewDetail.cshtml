@@ -1,0 +1,86 @@
+﻿@model ColoShopEcommerce.WebApp.Models.EF.Order
+@{
+    ViewBag.Title = "ViewDetail";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <div class="row">
+                            <div class="col-md-6" >
+                                <h4 class="card-title">Chi tiết đơn hàng</h4>
+                            </div>
+                            <div class="col-md-6" style="text-align: right">
+                                <a href="/admin/ordermanagement/UpdateOrder/@Model.Id" class="btn btn-primary mr-2">Chỉnh Sửa</a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Mã Đơn Hàng</label>
+                                    <input type="text" disabled class="form-control" value=@Model.Code />
+
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Tên Khách hàng</label>
+                                    <input class="form-control" value=@Model.CustomerName rows="4" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleInputName1">Số Điện Thoại</label>
+                                    <input type="text" class="form-control" value=@Model.Phone disabled />
+
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+
+                                <div class="form-group">
+                                    <label for="exampleInputPassword4">Ngày Tạo</label>
+                                    <input type="text" class="form-control" value=@Model.CreatedDate.ToString("dd/MM/yyyy") disabled />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="exampleSelectGender">Tình Trạng Thanh Toán</label>
+                                    <input class="form-control" value=@(Model.IsPaid ? "Xong": "Chưa") rows="4" disabled />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    @Html.Action("Partial_Product", "OrderManagement", new { id = Model.Id })
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/admin/ordermanagement" class="btn btn-warning">Quay Lại</a>
+                            </div>
+                            <div class="col-md-6" style="text-align: right">
+                                <a href="#" class="btn btn-primary mr-2">In Hóa Đơn</a>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+

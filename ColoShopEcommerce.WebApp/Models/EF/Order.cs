@@ -32,6 +32,6 @@ namespace ColoShopEcommerce.WebApp.Models.EF
         public bool IsDelivery { get; set; }
         public bool IsPaid { get; set; }
 
-        public ICollection<OrderDetail> OrderDetails { get; set; }
+        public virtual ICollection<OrderDetail> OrderDetails { get; set; }
     }
 }

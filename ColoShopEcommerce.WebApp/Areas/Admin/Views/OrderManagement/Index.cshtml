@@ -1,18 +1,15 @@
-﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.EF.Category>
+﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.EF.Order>
+@using ColoShopEcommerce.WebApp.Models.Common;
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh Sach Don Hang";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<!-- partial -->
 <div class="main-panel">
     <div class="content-wrapper">
         <div class="card">
             <div class="card-body">
                 @*Custom đường dẫn*@
-                <div>
-                    <a href="/admin/category/add" class="btn btn-primary">Thêm mới</a>
-                </div>
 
                 <br />
                 <div class="row">
@@ -21,10 +18,14 @@
                             <table id="order-listing" class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID #</th>
-                                        <th>Title</th>
-                                        <th>Position</th>
-                                        <th>Actions</th>
+                                        <th>STT #</th>
+                                        <th>Mã đơn hàng</th>
+                                        <th>Tên khách hàng</th>
+                                        <th>Phone</th>
+                                        <th>Tổng tiền</th>
+                                        <th>Ngày tạo</th>
+                                        <th>Tình trạng</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -35,11 +36,17 @@
                                         foreach (var item in Model)
                                         {
                                             <tr id="trow_@item.Id">
+
                                                 <td>@i</td>
-                                                <td>@item.Title</td>
-                                                <td>@item.Position</td>
+                                                <td>@item.Code</td>
+                                                <td>@item.CustomerName</td>
+                                                <td>@item.Phone</td>
+                                                <td>@ColoShopEcommerce.WebApp.Models.Common.Common.FormatCurrency(@item.TotalAmount, 0) VND </td>
+                                                <td>@item.CreatedDate.ToString("dd/MM/yyyy")</td>
+                                                <td>@(item.IsPaid? "Đã Thanh Toán": "Chưa Thanh Toán")</td>
                                                 <td>
-                                                    <a href="/admin/category/edit/@item.Id" class="btn btn-outline-primary">Sửa</a>
+                                                    <a href="/admin/ordermanagement/viewdetail/@item.Id" class="btn btn-outline-primary">Xem</a>
+                                                    @*<a href="/admin/products/edit/@item.Id" class="btn btn-outline-primary">Sửa</a>*@
                                                     <a href="#" data-id="@item.Id" class="btn btn-outline-primary btnDelete" onclick="showSuccessToast()">Xóa</a>
                                                 </td>
                                             </tr>
@@ -53,8 +60,6 @@
                                             <td colspan="4"> Không có bản ghi nào ... </td>
                                         </tr>
                                     }
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -66,16 +71,15 @@
     <!-- content-wrapper ends -->
     <!-- partial -->
 </div>
-
 @section scripts{
     <script>
         $(document).ready(function () {
             $('body').on('click', '.btnDelete', function () {
                 var id = $(this).data("id");
-                var msg = confirm('Bạn có muốn xóa bản ghi này không ?');
+                var msg = confirm('Bạn có muốn xóa đơn hàng này không ?');
                 if (msg === true) {
                     $.ajax({
-                        url: '/admin/category/delete',
+                        url: '/admin/ordermanagement/delete',
                         type: 'POST',
                         data: { id: id },
                         success: function (rs) {

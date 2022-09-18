@@ -24,7 +24,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail3">Mã Sản Phẩm </label>
-                                @Html.TextAreaFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "SP001" })
+                                @Html.TextBoxFor(x => x.ProductCode, new { @class = "form-control", @placeholder = "SP001" })
                                 @Html.ValidationMessageFor(x => x.ProductCode, null, new { @class = "text-danger" })
                             </div>
                             <div class="row">
@@ -51,21 +51,21 @@
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputPassword4">Giá Sản Phẩm</label>
-                                        @Html.TextAreaFor(x => x.Price, new { @class = "form-control", @placeholder = "đơn vị đồng" })
+                                        @Html.TextBoxFor(x => x.Price, new { @class = "form-control", @placeholder = "đơn vị đồng" })
                                         @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputPassword4">Số Lượng</label>
-                                        @Html.TextAreaFor(x => x.Quantity, new { @class = "form-control", @placeholder = "10" })
+                                        @Html.TextBoxFor(x => x.Quantity, new { @class = "form-control", @placeholder = "10" })
                                         @Html.ValidationMessageFor(x => x.Quantity, null, new { @class = "text-danger" })
                                     </div>
                                 </div>
                                 <div class="col-4">
                                     <div class="form-group">
                                         <label for="exampleInputPassword4">Giá Sale</label>
-                                        @Html.TextAreaFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "Giá Sale" })
+                                        @Html.TextBoxFor(x => x.PriceSale, new { @class = "form-control", @placeholder = "Giá Sale" })
                                         @Html.ValidationMessageFor(x => x.PriceSale, null, new { @class = "text-danger" })
                                     </div>
                                 </div>
