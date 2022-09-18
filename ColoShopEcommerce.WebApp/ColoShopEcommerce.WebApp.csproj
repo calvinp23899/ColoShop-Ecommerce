@@ -1391,6 +1391,7 @@
     <Content Include="Areas\Admin\Views\OrderManagement\Index.cshtml" />
     <Content Include="Areas\Admin\Views\OrderManagement\ViewDetail.cshtml" />
     <Content Include="Areas\Admin\Views\OrderManagement\Partial_Product.cshtml" />
+    <Content Include="Areas\Admin\Views\OrderManagement\UpdateOrder.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

@@ -10,8 +10,14 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Chi tiết đơn hàng</h4>
+                        
                         <div class="row">
+                            <div class="col-md-6" >
+                                <h4 class="card-title">Chi tiết đơn hàng</h4>
+                            </div>
+                            <div class="col-md-6" style="text-align: right">
+                                <a href="/admin/ordermanagement/UpdateOrder/@Model.Id" class="btn btn-primary mr-2">Chỉnh Sửa</a>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputName1">Mã Đơn Hàng</label>
@@ -52,14 +58,26 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="table table-bordered card-body">
-                        @Html.Action("Partial_Product", "OrderManagement", new { id = Model.Id })
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div>
+                                    @Html.Action("Partial_Product", "OrderManagement", new { id = Model.Id })
+                                </div>
+                            </div>
+                            
+                        </div>
                         <br />
-                        <a href="/admin/ordermanagement" class="btn btn-warning">Quay Lại</a>
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/admin/ordermanagement" class="btn btn-warning">Quay Lại</a>
+                            </div>
+                            <div class="col-md-6" style="text-align: right">
+                                <a href="#" class="btn btn-primary mr-2">In Hóa Đơn</a>
+                            </div>
+                        </div>
                     </div>
+
+
 
                 </div>
             </div>
