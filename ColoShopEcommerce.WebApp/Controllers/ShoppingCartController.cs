@@ -79,7 +79,7 @@ namespace ColoShopEcommerce.WebApp.Controllers
             {
                 var totalPrice = cart.UpdateQuantityCart(id, quantityUpdate);
                 var _subtotalPrice = cart.GetTotalPrice();
-                return Json(new { Success = true, newTotalPrice = Common.FormatCurrency(totalPrice,0) + "VND", subTotalPrice =Common.FormatCurrency(_subtotalPrice,0) + "VND"  });
+                return Json(new { Success = true, newTotalPrice = Models.Common.Common.FormatCurrency(totalPrice,0) + "VND", subTotalPrice = Models.Common.Common.FormatCurrency(_subtotalPrice,0) + "VND"  });
             }
             return Json(code);
         }
@@ -96,7 +96,7 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 {
                     cart.Remove(id);
                     var _totalprice = cart.GetTotalPrice();
-                    code = new { Success = true, Count = cart.CartItems.Count, subTotalPrice = Common.FormatCurrency(_totalprice, 0) + "VND"  };
+                    code = new { Success = true, Count = cart.CartItems.Count, subTotalPrice = Models.Common.Common.FormatCurrency(_totalprice, 0) + "VND"  };
 
                 }
             }

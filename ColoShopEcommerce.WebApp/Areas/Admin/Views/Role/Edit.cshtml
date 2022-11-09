@@ -1,0 +1,35 @@
+﻿@using Microsoft.AspNet.Identity.EntityFramework
+@model IdentityRole
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Thêm Quyền</h4>
+                        @using (Html.BeginForm("Edit", "Role", FormMethod.Post, new { }))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.ValidationSummary(true)
+                            @Html.HiddenFor(x => x.Id)
+                            <div class="form-group">
+                                <label for="exampleInputName1">Tên Quyền</label>
+                                @Html.TextBoxFor(x => x.Name, new { @class = "form-control", @placeholder = "Tên quyền" })
+                                @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+                            </div>
+
+                            <button type="submit" class="btn btn-primary mr-2">Cập Nhật</button>
+                            <a href="/admin/role" class="btn btn-warning">Quay Lại</a>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
