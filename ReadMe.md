@@ -4,4 +4,5 @@
 ## Install Package
 ## How to configure and run
 ## Config SendEmail
-- Web.config -> setting email.
+- Web.config -> setting email. 
+- Prerequisite: Email has already verified

@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
 {
-    public class DashboardController : BaseController
+    public class LoginAdminController : Controller
     {
-        // GET: Admin/Dashboard
+        // GET: Admin/LoginAdmin
         public ActionResult Index()
         {
             return View();
