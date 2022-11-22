@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
 {
-    public class AccountController : Controller
+    public class AccountAdminController : Controller
     {
         #region private property
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
@@ -24,11 +24,11 @@ namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
         }
 
 
-        public AccountController()
+        public AccountAdminController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountAdminController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;

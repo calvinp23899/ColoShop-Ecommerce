@@ -169,7 +169,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\RoleController.cs" />
@@ -998,6 +998,7 @@
     <Content Include="Content\Client\js\contact_custom.js" />
     <Content Include="Content\Client\js\custom.js" />
     <Content Include="Content\Client\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\Client\js\RegisterClient.js" />
     <Content Include="Content\Client\js\single_custom.js" />
     <Content Include="Content\Client\plugins\easing\easing.js" />
     <Content Include="Content\Client\plugins\font-awesome-4.7.0\css\font-awesome.css" />
@@ -1025,9 +1026,11 @@
     <Content Include="Content\Client\styles\login_styles.css" />
     <Content Include="Content\Client\styles\main_styles.css" />
     <Content Include="Content\Client\styles\PaymentCheckout.css" />
+    <Content Include="Content\Client\styles\RegisterClient.css" />
     <Content Include="Content\Client\styles\responsive.css" />
     <Content Include="Content\Client\styles\single_responsive.css" />
     <Content Include="Content\Client\styles\single_styles.css" />
+    <Content Include="Content\Templates\ForgotPassword.html" />
     <Content Include="Content\Templates\send1.html" />
     <Content Include="Content\Templates\send2.html" />
     <Content Include="favicon.ico" />
@@ -1434,7 +1437,6 @@
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\SendCode.cshtml" />
@@ -1462,6 +1464,7 @@
     <Content Include="Views\ShoppingCart\Index.cshtml" />
     <Content Include="Views\CheckOut\Index.cshtml" />
     <Content Include="Views\CheckOut\Checkout.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

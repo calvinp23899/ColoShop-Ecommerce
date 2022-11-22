@@ -43,9 +43,19 @@ namespace ColoShopEcommerce.WebApp
                 defaults: new { controller = "Home", action = "Index", alias = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Register",
+                url: "dang-ky-tai-khoan",
+                defaults: new { controller = "Account", action = "Register", alias = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Login",
+                url: "dang-nhap-tai-khoan",
+                defaults: new { controller = "Account", action = "Login", alias = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },new[] { "ColoShopEcommerce.WebApp.Controllers" }
             );
         }
     }

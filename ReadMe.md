@@ -6,3 +6,6 @@
 ## Config SendEmail
 - Web.config -> setting email. 
 - Prerequisite: Email has already verified
+##Account
+--Admin: admin123@gmail.com / Pass: 
+--Client: client1@gmail.com / Pass: Client123@
