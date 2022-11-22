@@ -7,5 +7,5 @@
 - Web.config -> setting email. 
 - Prerequisite: Email has already verified
 ##Account
---Admin: admin123@gmail.com / Pass: 
+--Admin: admin123@gmail.com / Pass: Admin123@
 --Client: client1@gmail.com / Pass: Client123@
