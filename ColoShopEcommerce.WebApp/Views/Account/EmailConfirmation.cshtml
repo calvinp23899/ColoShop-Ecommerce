@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "EmailConfirmation";
+    Layout = null;
+}
+
+<h2>@ViewBag.Title.</h2>
+<div>
+    <p>
+        Vui lòng kiểm tra Email  @ViewBag.Email của bạn để xác nhận tài khoản đăng nhập. Và sau đó @Html.ActionLink("vui Lòng nhấn vào đây để đăng nhập", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
+    </p>
+</div>
+

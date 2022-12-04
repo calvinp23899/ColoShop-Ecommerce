@@ -69,27 +69,46 @@ namespace ColoShopEcommerce.WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
+                var user = await UserManager.FindAsync(model.Email, model.Password);
+                if (user != null)
+                {
+                    if (user.EmailConfirmed == true)
+                    {
+                        await SignInManager.SignInAsync(user,isPersistent: false, model.RememberMe); 
+                        return RedirectToLocal(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Confirm Email Address.");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid username or password.");
+                }
+                
             }
+            return View(model);
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
-            }
+            //var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            //switch (result)
+            //{
+            //    case SignInStatus.Success:
+            //        return RedirectToLocal(returnUrl);
+            //    case SignInStatus.LockedOut:
+            //        return View("Lockout");
+            //    case SignInStatus.RequiresVerification:
+            //        return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+            //    case SignInStatus.Failure:
+            //    default:
+            //        ModelState.AddModelError("", "Invalid login attempt.");
+            //        return View(model);
+            //}
+
         }
 
         //
@@ -157,17 +176,20 @@ namespace ColoShopEcommerce.WebApp.Controllers
                 if (result.Succeeded)
                 {
                     //generates a ClaimsIdentity
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    //await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    string urlEmailConfirm = System.IO.File.ReadAllText(Server.MapPath("~/Content/Templates/EmailConfirm.html"));
+                    urlEmailConfirm = urlEmailConfirm.Replace("{{LinkEmailConfirm}}", callbackUrl);
+                    Common.SendEmail("ColoShop", "Email Confirmation", urlEmailConfirm.ToString(), user.Email);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("EmailConfirmation", "Account", new { Email = user.Email });
                 }
-                AddErrors(result);
+                AddErrors(result);  
             }
 
             // If we got this far, something failed, redisplay form
@@ -185,6 +207,38 @@ namespace ColoShopEcommerce.WebApp.Controllers
             }
             var result = await UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
+        }
+
+        // GET: /Account/ConfirmEmail
+        //[AllowAnonymous]
+        //public async Task<ActionResult> ConfirmEmail(string Token, string Email)
+        //{
+        //    ApplicationUser user = this.UserManager.FindById(Token);
+        //    if (user != null)
+        //    {
+        //        if (user.Email == Email)
+        //        {
+        //            user.ConfirmedEmail = true;
+        //            await UserManager.UpdateAsync(user);
+        //            await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        //            return RedirectToAction("Index", "Home", new { ConfirmedEmail = user.Email });
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("Confirm", "Account", new { Email = user.Email });
+        //        }
+        //    }
+        //    else
+        //    {
+        //        return RedirectToAction("Confirm", "Account", new { Email = "" });
+        //    }
+        //}
+
+        [AllowAnonymous]
+        public ActionResult Confirm(string Email)
+        {
+            ViewBag.Email = Email; 
+            return View();
         }
 
         //
@@ -487,5 +541,12 @@ namespace ColoShopEcommerce.WebApp.Controllers
             }
         }
         #endregion
+
+        [AllowAnonymous]
+        public ActionResult EmailConfirmation(string Email)
+        {
+            ViewBag.Email = Email;
+            return View();
+        }
     }
 }

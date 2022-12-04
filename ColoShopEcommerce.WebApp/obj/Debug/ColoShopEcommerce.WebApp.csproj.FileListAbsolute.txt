@@ -343,3 +343,5 @@ D:\.Net Project\ColoShop-Ecommerce\ColoShop-Ecommerce\ColoShopEcommerce.WebApp\o
 D:\.Net Project\ColoShop-Ecommerce\ColoShop-Ecommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.csproj.CopyComplete
 D:\.Net Project\ColoShop-Ecommerce\ColoShop-Ecommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.dll
 D:\.Net Project\ColoShop-Ecommerce\ColoShop-Ecommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.pdb
+D:\.Net Project\ColoShop-Ecommerce\ColoShop-Ecommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.UpdateEmailConfirm.resources
+D:\.Net Project\ColoShop-Ecommerce\ColoShop-Ecommerce\ColoShopEcommerce.WebApp\obj\Debug\ColoShopEcommerce.WebApp.Migrations.dropEmailConfirm.resources

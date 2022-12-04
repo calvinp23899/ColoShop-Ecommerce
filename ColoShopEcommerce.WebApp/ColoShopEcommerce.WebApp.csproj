@@ -223,6 +223,14 @@
     <Compile Include="Migrations\202207300316394_updateOrder.designer.cs">
       <DependentUpon>202207300316394_updateOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202212040032300_UpdateEmailConfirm.cs" />
+    <Compile Include="Migrations\202212040032300_UpdateEmailConfirm.designer.cs">
+      <DependentUpon>202212040032300_UpdateEmailConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202212040052554_dropEmailConfirm.cs" />
+    <Compile Include="Migrations\202212040052554_dropEmailConfirm.designer.cs">
+      <DependentUpon>202212040052554_dropEmailConfirm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -1030,6 +1038,7 @@
     <Content Include="Content\Client\styles\responsive.css" />
     <Content Include="Content\Client\styles\single_responsive.css" />
     <Content Include="Content\Client\styles\single_styles.css" />
+    <Content Include="Content\Templates\EmailConfirm.html" />
     <Content Include="Content\Templates\ForgotPassword.html" />
     <Content Include="Content\Templates\send1.html" />
     <Content Include="Content\Templates\send2.html" />
@@ -1465,6 +1474,7 @@
     <Content Include="Views\CheckOut\Index.cshtml" />
     <Content Include="Views\CheckOut\Checkout.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\EmailConfirmation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1509,6 +1519,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202207300316394_updateOrder.resx">
       <DependentUpon>202207300316394_updateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040032300_UpdateEmailConfirm.resx">
+      <DependentUpon>202212040032300_UpdateEmailConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202212040052554_dropEmailConfirm.resx">
+      <DependentUpon>202212040052554_dropEmailConfirm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
