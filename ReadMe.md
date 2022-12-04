@@ -8,4 +8,4 @@
 - Prerequisite: Email has already verified
 ##Account
 --Admin: admin123@gmail.com / Pass: Admin123@
---Client: client1@gmail.com / Pass: Client123@
+--Client: coloshopclient1@gmail.com / Pass: Abcd123@
