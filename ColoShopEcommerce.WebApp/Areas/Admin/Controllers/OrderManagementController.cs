@@ -8,7 +8,7 @@ using System.Web.Mvc;
 
 namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
 {
-    public class OrderManagementController : Controller
+    public class OrderManagementController : BaseController
     {
         #region private property
         private ApplicationDbContext _dbContext = new ApplicationDbContext();

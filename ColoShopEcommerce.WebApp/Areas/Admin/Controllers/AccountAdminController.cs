@@ -1,6 +1,8 @@
-﻿using ColoShopEcommerce.WebApp.Models;
+﻿using ColoShopEcommerce.WebApp.Constant;
+using ColoShopEcommerce.WebApp.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,6 @@ namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
         {
             return View();
         }
-
 
         public AccountAdminController()
         {
@@ -58,52 +59,64 @@ namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
             }
         }
 
-        #region Register Account
-        // GET: /Account/Register
-        [AllowAnonymous]
-        public ActionResult Register()
-        {
-            return View();
-        }
-
-        //
-        // POST: /Account/Register
+        #region Login
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Login(string emailAdmin, string passAdmin, string returnUrl)
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var user = await UserManager.FindAsync(emailAdmin, passAdmin);
+                bool checkRole = await UserManager.IsInRoleAsync(user.Id, "Admin");
+                if (user != null)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                    return RedirectToAction("Index", "Home");
+                    if (checkRole)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        var userSession = new UserLogin();
+                        userSession.Email = user.Email;
+                        userSession.ID = user.Id;
+                        Session.Add(CommonConstant.USER_SESSION, userSession);
+                        return RedirectToLoginAdmin(returnUrl);
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "Email is wrong.");
+                    }
                 }
-                AddErrors(result);
-            }
+                else
+                {
+                    ModelState.AddModelError("", "Invalid password.");
+                }
 
-            // If we got this far, something failed, redisplay form
-            return View(model);
+            }
+            return RedirectToAction("LoginAdmin","Index");
+
         }
+
         #endregion
 
-        #region private methods
-        private void AddErrors(IdentityResult result)
+        public ActionResult Logout()
         {
-            foreach (var error in result.Errors)
+            Session.Clear();
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "LoginAdmin");
+        }
+
+        #region private methods
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
             {
-                ModelState.AddModelError("", error);
+                return HttpContext.GetOwinContext().Authentication;
             }
+        }
+        private ActionResult RedirectToLoginAdmin(string returnUrl)
+        {
+            if (Url.IsLocalUrl(returnUrl))
+            {
+                return Redirect(returnUrl);
+            }
+            return RedirectToAction("Index", "Dashboard");
         }
         #endregion
     }

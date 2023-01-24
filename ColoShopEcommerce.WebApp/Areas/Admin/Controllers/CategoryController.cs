@@ -9,7 +9,7 @@ using ColoShopEcommerce.WebApp.Models.Common;
 
 namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
 {
-    public class CategoryController : Controller
+    public class CategoryController : BaseController
     {
         private ApplicationDbContext _dbContext = new ApplicationDbContext();
         // GET: Admin/Category

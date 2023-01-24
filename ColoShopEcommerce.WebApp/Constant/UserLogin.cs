@@ -8,7 +8,7 @@ namespace ColoShopEcommerce.WebApp.Constant
     [Serializable]
     public class UserLogin
     {
-        public long ID { set; get; }
-        public string UserName { set; get; }
+        public string ID { set; get; }
+        public string Email { set; get; }
     }
 }
