@@ -9,7 +9,7 @@ using System.Web.Mvc;
 
 namespace ColoShopEcommerce.WebApp.Areas.Admin.Controllers
 {
-    public class RoleController : Controller
+    public class RoleController : BaseController
     {
         #region private property
         private ApplicationDbContext _dbContext = new ApplicationDbContext();

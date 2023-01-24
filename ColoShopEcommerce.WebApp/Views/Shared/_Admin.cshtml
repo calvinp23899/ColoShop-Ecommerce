@@ -33,10 +33,10 @@
                 </button>
                 <ul class="navbar-nav navbar-nav-right">
 
-
+                    @using Microsoft.AspNet.Identity
                     <li class="nav-item nav-profile dropdown">
                         <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
-                            <img src="~/Content/Admin/images/faces/face5.jpg" alt="profile" /> Xin Chào Calvin
+                            <img src="~/Content/Admin/images/faces/face5.jpg" alt="profile" /> Xin Chào @User.Identity.GetUserName()
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                             <a class="dropdown-item">
@@ -44,7 +44,7 @@
                                 Tài Khoản
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item">
+                            <a class="dropdown-item" href="@Url.Action("LogOut","AccountAdmin")">
                                 <i class="mdi mdi-logout text-primary"></i>
                                 Đăng Xuất
                             </a>
