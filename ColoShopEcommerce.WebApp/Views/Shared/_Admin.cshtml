@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="~/Content/Admin/css/vertical-layout-light/style.css">
     <!-- endinject -->
     <link rel="shortcut icon" href="~/Content/Admin/images/favicon.png" />
+
     @RenderSection("css", required: false)
 </head>
 <body>
@@ -149,7 +150,7 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","OrderManagement")"> Hóa Đơn Hàng </a></li>
                                 @*<li class="nav-item"> <a class="nav-link" href="#"> Pricing Table </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#"> Invoice </a></li>*@
+                                    <li class="nav-item"> <a class="nav-link" href="#"> Invoice </a></li>*@
                             </ul>
                         </div>
                     </li>
@@ -164,7 +165,7 @@
     </div>
 
 
-
+    @Scripts.Render("~/bundles/jquery")
     <!-- plugins:js -->
     <script src="~/Content/Admin/vendors/js/vendor.bundle.base.js"></script>
     <script src="~/Content/Admin/vendors/js/vendor.bundle.addons.js"></script>
@@ -184,7 +185,8 @@
     <script src="~/Content/Admin/js/toastDemo.js"></script>
     <!-- Lib CKEditor-->
     <script src="//cdn.ckeditor.com/4.19.0/full/ckeditor.js"></script>
-
+    <script src="~/Scripts/InvoiceReport.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
     <!-- End custom js for this page-->
     @RenderSection("scripts", required: false)
 
