@@ -19,6 +19,13 @@ namespace ColoShopEcommerce.WebApp.Areas.Admin
                 "Admin/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },new[] { "ColoShopEcommerce.WebApp.Areas.Admin.Controllers" }
             );
+
+            context.MapRoute(
+                name: "PrintOrder",
+                url: "in-hoa-don-bill",
+                defaults: new { controller = "OrderManagement",action = "PrintInvoice", id = UrlParameter.Optional }, new[] { "ColoShopEcommerce.WebApp.Areas.Admin.Controllers" }
+            );
+
         }
     }
 }

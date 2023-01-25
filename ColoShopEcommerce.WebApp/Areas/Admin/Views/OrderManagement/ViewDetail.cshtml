@@ -10,9 +10,9 @@
             <div class="col-12 grid-margin stretch-card">
                 <div class="card">
                     <div class="card-body">
-                        
+
                         <div class="row">
-                            <div class="col-md-6" >
+                            <div class="col-md-6">
                                 <h4 class="card-title">Chi tiết đơn hàng</h4>
                             </div>
                             <div class="col-md-6" style="text-align: right">
@@ -64,7 +64,7 @@
                                     @Html.Action("Partial_Product", "OrderManagement", new { id = Model.Id })
                                 </div>
                             </div>
-                            
+
                         </div>
                         <br />
                         <div class="row">
@@ -72,7 +72,7 @@
                                 <a href="/admin/ordermanagement" class="btn btn-warning">Quay Lại</a>
                             </div>
                             <div class="col-md-6" style="text-align: right">
-                                <a href="#" class="btn btn-primary mr-2">In Hóa Đơn</a>
+                                <button id="btnGenerate" data-id="@Model.Id" class="btn btn-primary mr-2">In Hóa Đơn</button>
                             </div>
                         </div>
                     </div>
@@ -83,4 +83,5 @@
             </div>
         </div>
     </div>
+</div>
 
