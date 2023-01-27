@@ -45,7 +45,7 @@
                                 Tài Khoản
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="@Url.Action("LogOut","AccountAdmin")">
+                            <a class="dropdown-item" href="@Url.Action("LogOut","LoginAdmin")">
                                 <i class="mdi mdi-logout text-primary"></i>
                                 Đăng Xuất
                             </a>
@@ -88,9 +88,8 @@
                         </a>
                         <div class="collapse" id="auth">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="#"> Admin Account </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Role")"> Quyền quản trị </a></li>
-                                <li class="nav-item"> <a class="nav-link" href="#"> Client Account </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","AccountManagement")"> Tài khoản users </a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Role")"> Phân quyền </a></li>
                             </ul>
                         </div>
                     </li>

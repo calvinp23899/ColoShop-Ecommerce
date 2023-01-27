@@ -1,0 +1,96 @@
+﻿@model IEnumerable<ColoShopEcommerce.WebApp.Models.ViewModel.UserRolesViewModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<!-- partial -->
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="card">
+            <div class="card-body">
+                @*Custom đường dẫn*@
+                <div>
+                    <a href="/admin/category/add" class="btn btn-primary">Thêm mới</a>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-12">
+                        <div class="table-responsive">
+                            <table id="order-listing" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID #</th>
+                                        <th>Username</th>
+                                        <th>Email</th>
+                                        <th>Roles</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Any())
+                                    {
+
+                                        var i = 1;
+                                        foreach (var item in Model)
+                                        {
+                                            <tr id="trow_@item.UserId">
+                                                <td>@i</td>
+                                                <td>@item.Username</td>
+                                                <td>@item.Email</td>
+                                                <td>
+                                                    @item.Role
+                                                </td>
+                                                <td>
+                                                    <a href="/Admin/AccountManagement/manage/@item.UserId" class="btn btn-outline-primary">Sửa</a>
+                                                    @*<a href="#" data-id="@item.UserId" class="btn btn-outline-primary btnDelete" onclick="showSuccessToast()">Xóa</a>*@
+                                                </td>
+                                            </tr>
+                                            i++;
+                                        }
+
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="4"> Không có bản ghi nào ... </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- content-wrapper ends -->
+    <!-- partial -->
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $('body').on('click', '.btnDelete', function () {
+                var id = $(this).data("id");
+                var msg = confirm('Bạn có muốn xóa bản ghi này không ?');
+                if (msg === true) {
+                    $.ajax({
+                        url: '/admin/category/delete',
+                        type: 'POST',
+                        data: { id: id },
+                        success: function (rs) {
+                            if (rs.success) {
+                                $('#trow_' + id).remove();
+                            }
+                        }
+                    });
+                }
+                return false;
+            });
+        });
+    </script>
+}
