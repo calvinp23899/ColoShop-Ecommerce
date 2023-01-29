@@ -3,6 +3,7 @@
 - Entity Framework 4.8 - Code First 
 ## Install Package
 ## How to configure and run
+- Open Manager Console -> update-database
 ## Config SendEmail
 - Web.config -> setting email. 
 - Prerequisite: Email has already verified
